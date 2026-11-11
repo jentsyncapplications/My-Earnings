@@ -93,7 +93,8 @@ fun DailyEarnsScreen(navController: NavController, date: String) {
                 // It pushes CONTENT below the status bar
                 .statusBarsPadding()
         ) {
-            MonthlyHeaderDaily(monthWord)
+//            MonthlyHeaderDaily(monthWord)
+            MonthlyHeaderDaily(DateUtils.formatYearMonth(yearMonthFormat(date).toString()))
             Spacer(modifier = Modifier.height(8.dp))
 
             if (earningsToday.isEmpty()) {

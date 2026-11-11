@@ -110,7 +110,8 @@ fun MonthlyEarningScreen(navController: NavController) {
 
                         // Header: Date
                         Text(
-                            text = monthWord,
+//                            text = monthWord,
+                            text = DateUtils.formatYearMonth(report.month),
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.SemiBold,
                                 color = colorResource(id = R.color.white)
@@ -134,7 +135,7 @@ fun MonthlyEarningScreen(navController: NavController) {
                         StatText(
                             label = "Spent",
                             value = "$selectedCurrency ${report.totalSpend}",
-                            valueColor = colorResource(id = R.color.red)
+                            valueColor = colorResource(id = R.color.mutedcrimson)
                         )
 
                     }

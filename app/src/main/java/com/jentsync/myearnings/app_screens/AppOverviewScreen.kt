@@ -3,6 +3,7 @@ package com.jentsync.myearnings.app_screens
 
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -44,6 +45,7 @@ import compose.icons.fontawesomeicons.solid.FileInvoiceDollar
 
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppOverviewScreen(navController: NavController) {
@@ -53,8 +55,15 @@ fun AppOverviewScreen(navController: NavController) {
     )
 
     val context = LocalContext.current
-    val appVersion = "1.0.0" // Ideally pull this from BuildConfig
+//    val appVersion = "1.0.0" // Ideally pull this from BuildConfig
+//    val appVersion = BuildConfig.VE/RSION_NAME.ifBlank { "1.0.0" }
 
+    val versionName = try{
+       val packageInfo =context.packageManager.getPackageInfo(context.packageName, 0)
+        packageInfo.versionName
+    } catch (e: PackageManager.NameNotFoundException){
+        "1.0.0"
+    }
 
     var showIpDialog by remember { mutableStateOf(false) }
 
@@ -109,7 +118,7 @@ fun AppOverviewScreen(navController: NavController) {
             )
 
             Text(
-                text = "Version $appVersion",
+                text = "Version $versionName",
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.Gray
             )

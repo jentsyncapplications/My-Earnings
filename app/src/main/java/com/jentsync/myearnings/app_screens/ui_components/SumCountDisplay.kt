@@ -66,35 +66,85 @@ fun SumCountDisplay() {
         Triple("Total Spend", "$selectedCurrency $totalSpent", FontAwesomeIcons.Solid.CreditCard)
     )
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                color = colorResource(id = R.color.charcoal_blue),
-                shape = RoundedCornerShape(16.dp)
-            )
-            .padding(16.dp),
+//    Box(
+//        modifier = Modifier
+//            .fillMaxWidth()
+//            .background(
+//                color = colorResource(id = R.color.charcoal_blue),
+//                shape = RoundedCornerShape(16.dp)
+//            )
+//            .padding(16.dp),
+//
+//    ) {
+//        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+//
+//
+//
+//            data.chunked(2).forEach { rowItems ->
+//                Row(
+//                    modifier = Modifier.fillMaxWidth(),
+//                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+//                ) {
+//
+//                    rowItems.forEach { stat ->
+//                        DataItem(
+//                            title = stat.first,
+//                            value = stat.second,
+//                            icon = stat.third,
+//                            modifier = Modifier.weight(1f)
+//                        )
+//                    }
+//
+//                    if (rowItems.size == 1) {
+//                        Spacer(modifier = Modifier.weight(1f))
+//                    }
+//                }
+//            }
+//        }
+//    }
 
+
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
+        // Section heading
+        Text(
+            text = "This Month at a Glance",
+            style = MaterialTheme.typography.titleMedium,
+            color = colorResource(id = R.color.dusk_blue)
+        )
 
-            data.chunked(2).forEach { rowItems ->
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
-                ) {
+        // Your existing monthly totals card
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(
+                    color = colorResource(id = R.color.charcoal_blue),
+                    shape = RoundedCornerShape(16.dp)
+                )
+                .padding(16.dp)
+        ) {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                data.chunked(2).forEach { rowItems ->
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        rowItems.forEach { stat ->
+                            DataItem(
+                                title = stat.first,
+                                value = stat.second,
+                                icon = stat.third,
+                                modifier = Modifier.weight(1f)
+                            )
+                        }
 
-                    rowItems.forEach { stat ->
-                        DataItem(
-                            title = stat.first,
-                            value = stat.second,
-                            icon = stat.third,
-                            modifier = Modifier.weight(1f)
-                        )
-                    }
-
-                    if (rowItems.size == 1) {
-                        Spacer(modifier = Modifier.weight(1f))
+                        if (rowItems.size == 1) {
+                            Spacer(modifier = Modifier.weight(1f))
+                        }
                     }
                 }
             }

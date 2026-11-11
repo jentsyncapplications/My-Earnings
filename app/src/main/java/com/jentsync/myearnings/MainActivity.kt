@@ -63,23 +63,24 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalAnimationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Ensure full-screen layout
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-
-
-        // ✅ Enable edge-to-edge layout with transparent system bars
-        enableEdgeToEdge(
-            statusBarStyle = SystemBarStyle.auto(
-                lightScrim = Color.TRANSPARENT,
-                darkScrim = Color.TRANSPARENT
-            ),
-            navigationBarStyle = SystemBarStyle.auto(
-                lightScrim = Color.TRANSPARENT,
-                darkScrim = Color.TRANSPARENT
-            )
-        )
-
+////////////////////////////////////////////////////
+//        // Ensure full-screen layout
+//        WindowCompat.setDecorFitsSystemWindows(window, false)
+//
+//
+//        // ✅ Enable edge-to-edge layout with transparent system bars
+//        enableEdgeToEdge(
+//            statusBarStyle = SystemBarStyle.auto(
+//                lightScrim = Color.TRANSPARENT,
+//                darkScrim = Color.TRANSPARENT
+//            ),
+//            navigationBarStyle = SystemBarStyle.auto(
+//                lightScrim = Color.TRANSPARENT,
+//                darkScrim = Color.TRANSPARENT
+//            )
+//        )
+        WindowCompat.enableEdgeToEdge(window)
+////////////////////////////////////////////////
         setContent {
             val navController = rememberAnimatedNavController()
 
